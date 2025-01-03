@@ -7,6 +7,9 @@ import CardPage from '@pages/Card'
 import SignupPage from '@pages/Signup'
 import SigninPage from '@pages/Signin'
 import Navbar from '@shared/Navbar'
+import PrivateRoute from '@components/auth/PrivateRoute'
+import ApplyPage from '@pages/Apply'
+import ApplyDone from '@pages/ApplyDone'
 
 function App() {
   return (
@@ -18,6 +21,22 @@ function App() {
         <Route path="/signup" Component={SignupPage} />
         <Route path="/signin" Component={SigninPage} />
         <Route path="/card/:id" Component={CardPage} />
+        <Route
+          path="/apply/:id"
+          element={
+            <PrivateRoute>
+              <ApplyPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/apply/done"
+          element={
+            <PrivateRoute>
+              <ApplyDone />
+            </PrivateRoute>
+          }
+        />
         <Route path="/test" Component={TestPage} />
       </Routes>
     </BrowserRouter>
