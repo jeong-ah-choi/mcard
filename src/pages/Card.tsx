@@ -1,18 +1,21 @@
+import { useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
-
-import Top from '@/components/shared/Top'
-import { getCard } from '@/remote/card'
-import ListRow from '@/components/shared/ListRow'
-import FixedBottomButton from '@/components/shared/FixedBottomButton'
-import Flex from '@/components/shared/Flex'
-import Text from '@/components/shared/Text'
 import { motion } from 'framer-motion'
-import { useCallback } from 'react'
+
+import { getCard } from '@remote/card'
 import useUser from '@hooks/auth/useUser'
 import { useAlertContext } from '@contexts/AlertContext'
+
+import Top from '@components/shared/Top'
+import ListRow from '@components/shared/ListRow'
+import FixedBottomButton from '@components/shared/FixedBottomButton'
+import Flex from '@components/shared/Flex'
+import Text from '@components/shared/Text'
+import Review from '@components/card/Review'
+import Spacing from '@components/shared/Spacing'
 
 function CardPage() {
   const { id = '' } = useParams()
@@ -90,6 +93,12 @@ function CardPage() {
           <Text typography="t7">{removeHtmlTags(promotion.terms)}</Text>
         </Flex>
       ) : null}
+
+      <Spacing size={1000} />
+
+      <Review />
+
+      <Spacing size={100} />
 
       <FixedBottomButton
         label="1분만에 신청하고 혜택받기"
